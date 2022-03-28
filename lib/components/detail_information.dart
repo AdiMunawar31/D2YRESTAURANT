@@ -24,7 +24,7 @@ class DetailInformation extends StatelessWidget {
           const SizedBox(height: 8.0),
           Row(
             children: [
-              const Icon(Icons.location_on, color: Colors.grey, size: 18),
+              const Icon(Icons.location_on, color: Colors.red, size: 18),
               Padding(
                 padding: const EdgeInsets.only(top: 2.0),
                 child: Text(

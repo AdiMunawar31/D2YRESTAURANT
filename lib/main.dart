@@ -1,5 +1,6 @@
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
+import 'package:d2yrestaurant/screens/search_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
           SplashScreen.routeName: (context) => const SplashScreen(),
           HomeScreen.routeName: (context) => const HomeScreen(),
           DetailScreen.routeName: ((context) => DetailScreen(
-              id: ModalRoute.of(context)?.settings.arguments as String))
+              id: ModalRoute.of(context)?.settings.arguments as String)),
+          SearchScreen.routeName: (context) => const SearchScreen()
         });
   }
 }

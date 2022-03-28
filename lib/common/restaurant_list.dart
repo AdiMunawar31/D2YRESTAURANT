@@ -102,7 +102,7 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
                   Row(
                     children: [
                       const Icon(Icons.location_on,
-                          color: Colors.grey, size: 16),
+                          color: Colors.red, size: 16),
                       Padding(
                         padding: const EdgeInsets.only(top: 2.0),
                         child: Text(
