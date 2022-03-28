@@ -15,10 +15,10 @@ class _SaveButtonState extends State<SaveButton> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return CircleAvatar(
-      backgroundColor: screenWidth > 800 ? Colors.red : Colors.white,
+      backgroundColor: screenWidth < 800 ? Colors.red : Colors.white,
       child: IconButton(
         icon: Icon(isSaved ? CupertinoIcons.heart_fill : CupertinoIcons.heart),
-        color: screenWidth < 800 ? Colors.red : Colors.white,
+        color: screenWidth > 800 ? Colors.red : Colors.white,
         onPressed: () {
           setState(() {
             isSaved = !isSaved;

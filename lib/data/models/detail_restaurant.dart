@@ -37,7 +37,7 @@ class Restaurant {
   String city;
   String address;
   String pictureId;
-  int rating;
+  num rating;
   List<Category> categories;
   Menus menus;
   List<CustomerReview> customerReviews;

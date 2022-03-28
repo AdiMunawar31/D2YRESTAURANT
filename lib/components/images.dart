@@ -29,12 +29,12 @@ class Images extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.red,
                 child: IconButton(
                   icon: const Icon(
                     CupertinoIcons.back,
                     size: 24,
-                    color: Colors.red,
+                    color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.pop(context);

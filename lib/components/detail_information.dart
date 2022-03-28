@@ -28,7 +28,7 @@ class DetailInformation extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 2.0),
                 child: Text(
-                  restaurant.city,
+                  '${restaurant.address}, ${restaurant.city}',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
@@ -54,6 +54,43 @@ class DetailInformation extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Divider(color: Colors.grey),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 16.0),
+            child: Text('Category',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
+          SizedBox(
+            height: 32.0,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: restaurant.categories.length,
+              itemBuilder: (context, index) {
+                final Category category = restaurant.categories[index];
+                return Container(
+                  margin: const EdgeInsets.only(right: 12.0),
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                      color: Colors.red[50],
+                      border: Border.all(color: Colors.red, width: 1.0),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(4.0))),
+                  child: Text(
+                    category.name,
+                    style: const TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold),
+                  ),
+                );
+              },
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),

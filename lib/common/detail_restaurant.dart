@@ -1,4 +1,5 @@
 import 'package:d2yrestaurant/components/buttons.dart';
+import 'package:d2yrestaurant/components/customer_review.dart';
 import 'package:d2yrestaurant/components/detail_information.dart';
 import 'package:d2yrestaurant/components/drink_list.dart';
 import 'package:d2yrestaurant/components/food_list.dart';
@@ -42,6 +43,15 @@ class DetailRestaurant extends StatelessWidget {
                     child: Heading(name: 'Drinks Menu'),
                   ),
                   DrinkList(restaurants: state.result.restaurant),
+                  const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text('Reviews',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                  CustomerReviewList(restaurant: state.result.restaurant),
                   const MyButton()
                 ],
               ),

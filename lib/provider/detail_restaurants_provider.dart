@@ -29,7 +29,7 @@ class DetailRestaurantsProvider extends ChangeNotifier {
       notifyListeners();
       final restaurants =
           await detailRestaurantApiService.getRestaurantDetail(id);
-      if (restaurants.restaurant.id.isEmpty) {
+      if (restaurants.message.isEmpty) {
         _state = ResultState.NoData;
         notifyListeners();
         return _message = 'Empty Data';
