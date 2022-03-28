@@ -1,17 +1,17 @@
-import 'package:d2yrestaurant/models/restaurant.dart';
+import 'package:d2yrestaurant/data/models/restaurant.dart';
+import 'package:d2yrestaurant/provider/restaurants_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RestaurantList extends StatelessWidget {
   const RestaurantList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String>(
-      future:
-          DefaultAssetBundle.of(context).loadString('assets/restaurant.json'),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
+    return Consumer<RestaurantsProvider>(
+      builder: (context, state, _) {
+        if (state.state == ResultState.Loading) {
           return const Center(
             child: CircularProgressIndicator(
               strokeWidth: 6.0,
@@ -19,25 +19,31 @@ class RestaurantList extends StatelessWidget {
               color: Colors.red,
             ),
           );
-        } else {
-          final List<Restaurants> restaurants = parseRestaurants(snapshot.data);
+        } else if (state.state == ResultState.HasData) {
           return SafeArea(
             child: ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              itemCount: restaurants.length,
+              itemCount: state.result.restaurants.length,
               itemBuilder: (context, index) {
-                return _buildRestaurantsItem(context, restaurants[index]);
+                return _buildRestaurantsItem(
+                    context, state.result.restaurants[index]);
               },
             ),
           );
+        } else if (state.state == ResultState.NoData) {
+          return Center(child: Text(state.message));
+        } else if (state.state == ResultState.Error) {
+          return Center(child: Text(state.message));
+        } else {
+          return const Center(child: Text(''));
         }
       },
     );
   }
 }
 
-Widget _buildRestaurantsItem(BuildContext context, Restaurants restaurant) {
+Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
   return InkWell(
       onTap: () {
         Navigator.pushNamed(context, DetailScreen.routeName,
@@ -70,7 +76,7 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurants restaurant) {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(4.0),
                     child: Image.network(
-                      restaurant.pictureId,
+                      'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
                       fit: BoxFit.cover,
                     )),
               ),

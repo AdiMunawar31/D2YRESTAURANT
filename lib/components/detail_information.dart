@@ -1,8 +1,8 @@
-import 'package:d2yrestaurant/models/restaurant.dart';
+import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:flutter/material.dart';
 
 class DetailInformation extends StatelessWidget {
-  final Restaurants restaurant;
+  final Restaurant restaurant;
 
   const DetailInformation({Key? key, required this.restaurant})
       : super(key: key);

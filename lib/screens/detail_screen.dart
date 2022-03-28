@@ -4,12 +4,12 @@ import 'package:d2yrestaurant/components/drink_list.dart';
 import 'package:d2yrestaurant/components/food_list.dart';
 import 'package:d2yrestaurant/components/heading.dart';
 import 'package:d2yrestaurant/components/images.dart';
-import 'package:d2yrestaurant/models/restaurant.dart';
+import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
   static const routeName = '/detail_screen';
-  final Restaurants restaurant;
+  final Restaurant restaurant;
 
   const DetailScreen({Key? key, required this.restaurant}) : super(key: key);
 
@@ -27,12 +27,12 @@ class DetailScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Heading(name: 'Foods Menu'),
               ),
-              FoodList(restaurants: restaurant),
+              // FoodList(restaurants: restaurant),
               const Padding(
                 padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: Heading(name: 'Drinks Menu'),
               ),
-              DrinkList(restaurants: restaurant),
+              // DrinkList(restaurants: restaurant),
               const MyButton()
             ],
           ),

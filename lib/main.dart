@@ -1,4 +1,4 @@
-import 'package:d2yrestaurant/models/restaurant.dart';
+import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (context) => const HomeScreen(),
           DetailScreen.routeName: ((context) => DetailScreen(
               restaurant:
-                  ModalRoute.of(context)?.settings.arguments as Restaurants))
+                  ModalRoute.of(context)?.settings.arguments as Restaurant))
         });
   }
 }
