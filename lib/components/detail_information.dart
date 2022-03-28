@@ -1,4 +1,4 @@
-import 'package:d2yrestaurant/data/models/restaurant.dart';
+import 'package:d2yrestaurant/data/models/detail_restaurant.dart';
 import 'package:flutter/material.dart';
 
 class DetailInformation extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:d2yrestaurant/components/saved_button.dart';
-import 'package:d2yrestaurant/data/models/restaurant.dart';
+import 'package:d2yrestaurant/data/models/detail_restaurant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,8 @@ class Images extends StatelessWidget {
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(16.0),
                     bottomRight: Radius.circular(16.0)),
-                child: Image.network(restaurant.pictureId)),
+                child: Image.network(
+                    'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}')),
           ),
         ),
         Padding(

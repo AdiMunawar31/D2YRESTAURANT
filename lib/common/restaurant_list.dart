@@ -47,7 +47,7 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
   return InkWell(
       onTap: () {
         Navigator.pushNamed(context, DetailScreen.routeName,
-            arguments: restaurant);
+            arguments: restaurant.id);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 16.0),
