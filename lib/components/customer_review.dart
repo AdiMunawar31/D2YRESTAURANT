@@ -40,7 +40,6 @@ Widget _buildReview(BuildContext context, CustomerReview review) {
           ],
           border: Border.all(width: 0.1),
           borderRadius: const BorderRadius.all(Radius.circular(8.0))),
-      // width: 130,
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(

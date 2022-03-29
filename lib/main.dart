@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'D2Y RESTAURANT',
+        theme: ThemeData(
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  primary: Colors.red,
+                )),
         initialRoute: SplashScreen.routeName,
         routes: {
           SplashScreen.routeName: (context) => const SplashScreen(),
