@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:d2yrestaurant/data/api/restaurant_api_service.dart';
 import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:flutter/foundation.dart';
@@ -35,6 +37,10 @@ class RestaurantsProvider extends ChangeNotifier {
         notifyListeners();
         return _restaurantResult = restaurant;
       }
+    } on SocketException {
+      _state = ResultState.Error;
+      notifyListeners();
+      return _message = "No Internet Connection";
     } catch (err) {
       _state = ResultState.Error;
       notifyListeners();

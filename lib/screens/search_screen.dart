@@ -108,4 +108,10 @@ class _SearchScreenState extends State<SearchScreen> {
           );
         }));
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.clear();
+  }
 }

@@ -12,11 +12,14 @@ class SearchRestaurantList extends StatelessWidget {
     return Consumer<SearchRestaurantsProvider>(
       builder: (context, state, _) {
         if (state.state == ResultState.Loading) {
-          return const Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 6.0,
-              semanticsLabel: 'Loading...',
-              color: Colors.red,
+          return const Padding(
+            padding: EdgeInsets.only(top: 40.0),
+            child: Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 6.0,
+                semanticsLabel: 'Loading...',
+                color: Colors.red,
+              ),
             ),
           );
         } else if (state.state == ResultState.HasData) {
