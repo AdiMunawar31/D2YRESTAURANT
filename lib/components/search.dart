@@ -1,8 +1,9 @@
+import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchBox extends StatelessWidget {
-  const SearchBox({Key? key}) : super(key: key);
+  SearchBox({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
