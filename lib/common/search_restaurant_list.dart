@@ -13,7 +13,7 @@ class SearchRestaurantList extends StatelessWidget {
       builder: (context, state, _) {
         if (state.state == ResultState.Loading) {
           return const Padding(
-            padding: EdgeInsets.only(top: 40.0),
+            padding: EdgeInsets.only(top: 150.0),
             child: Center(
               child: CircularProgressIndicator(
                 strokeWidth: 6.0,
@@ -41,7 +41,15 @@ class SearchRestaurantList extends StatelessWidget {
                   height: 150,
                   child: Image.asset('assets/images/search.png')));
         } else if (state.state == ResultState.Error) {
-          return Center(child: Text(state.message));
+          return Padding(
+            padding: const EdgeInsets.only(top: 150.0),
+            child: Center(
+                child: Text(
+              state.message,
+              style: const TextStyle(
+                  fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+            )),
+          );
         } else {
           return const Center(child: Text(''));
         }

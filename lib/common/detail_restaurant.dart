@@ -58,9 +58,25 @@ class DetailRestaurant extends StatelessWidget {
             ),
           );
         } else if (state.state == ResultState.NoData) {
-          return Center(child: Text(state.message));
+          return Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Center(
+                child: Text(
+              state.message,
+              style: const TextStyle(
+                  fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+            )),
+          );
         } else if (state.state == ResultState.Error) {
-          return Center(child: Text(state.message));
+          return Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Center(
+                child: Text(
+              state.message,
+              style: const TextStyle(
+                  fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+            )),
+          );
         } else {
           return const Center(child: Text(''));
         }

@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(top: 4.0, bottom: 16.0),
+                      padding: EdgeInsets.only(bottom: 24.0),
                       child: Text(
                         'Recomendations Restaurant for you!',
                         style: TextStyle(fontSize: 16, color: Colors.black54),
