@@ -93,12 +93,24 @@ class _SearchScreenState extends State<SearchScreen> {
                                     const EdgeInsets.only(left: 15, top: 15)),
                           )),
                       (query.isEmpty)
-                          ? Center(
-                              child: Container(
-                                  margin: const EdgeInsets.only(top: 150.0),
-                                  height: 150,
-                                  child:
-                                      Image.asset('assets/images/search.png')))
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 70.0, left: 30.0, right: 30.0),
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    Image.asset('assets/images/search.png',
+                                        height: 150),
+                                    const Text(
+                                      'Finding restaurant for you. Please Wait!',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.grey),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
                           : const SearchRestaurantList(),
                     ],
                   ),
@@ -107,11 +119,5 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           );
         }));
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.clear();
   }
 }
