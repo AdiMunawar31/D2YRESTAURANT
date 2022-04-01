@@ -5,6 +5,7 @@ import 'package:d2yrestaurant/components/drink_list.dart';
 import 'package:d2yrestaurant/components/food_list.dart';
 import 'package:d2yrestaurant/components/heading.dart';
 import 'package:d2yrestaurant/components/images.dart';
+import 'package:d2yrestaurant/helpers/state.dart';
 import 'package:d2yrestaurant/provider/detail_restaurants_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

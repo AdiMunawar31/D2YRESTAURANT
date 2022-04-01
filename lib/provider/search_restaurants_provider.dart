@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:d2yrestaurant/data/api/search_restaurant_api_service.dart';
 import 'package:d2yrestaurant/data/models/search_restaurant.dart';
+import 'package:d2yrestaurant/helpers/state.dart';
 import 'package:flutter/foundation.dart';
-
-enum ResultState { Loading, NoData, HasData, Error }
 
 class SearchRestaurantsProvider extends ChangeNotifier {
   final SearchRestaurantApiService searchRestaurantApiService;

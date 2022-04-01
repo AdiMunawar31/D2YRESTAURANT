@@ -1,4 +1,5 @@
 import 'package:d2yrestaurant/data/models/search_restaurant.dart';
+import 'package:d2yrestaurant/helpers/state.dart';
 import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
