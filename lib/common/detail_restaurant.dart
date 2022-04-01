@@ -7,6 +7,7 @@ import 'package:d2yrestaurant/components/heading.dart';
 import 'package:d2yrestaurant/components/images.dart';
 import 'package:d2yrestaurant/helpers/state.dart';
 import 'package:d2yrestaurant/provider/detail_restaurants_provider.dart';
+import 'package:d2yrestaurant/screens/review_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,7 +53,40 @@ class DetailRestaurant extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         )),
                   ),
-                  CustomerReviewList(restaurant: state.result.restaurant),
+                  CustomerReviewFirst(restaurant: state.result.restaurant),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 8.0,
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: const Offset(2, 2),
+                          )
+                        ],
+                        border: Border.all(width: 0.1),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8.0))),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, ReviewScreen.routeName,
+                            arguments: state.result.restaurant);
+                      },
+                      child: const Text(
+                        'See All Reviews',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Divider(color: Colors.grey),
+                  ),
                   const MyButton()
                 ],
               ),
