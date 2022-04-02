@@ -1,5 +1,8 @@
 import 'package:d2yrestaurant/data/models/detail_restaurant.dart';
+import 'package:d2yrestaurant/helpers/state.dart';
+import 'package:d2yrestaurant/provider/detail_restaurants_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ReviewRestaurant extends StatelessWidget {
   final Restaurant restaurant;
@@ -9,16 +12,64 @@ class ReviewRestaurant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 8.0),
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: restaurant.customerReviews.length,
-        itemBuilder: (context, index) {
-          return _buildReview(context, restaurant.customerReviews[index]);
-        },
-      ),
+    return Consumer<DetailRestaurantsProvider>(
+      builder: (context, state, _) {
+        if (state.state == ResultState.Loading) {
+          return const Padding(
+            padding: EdgeInsets.only(top: 150.0),
+            child: Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 6.0,
+                semanticsLabel: 'Loading...',
+                color: Colors.red,
+              ),
+            ),
+          );
+        } else if (state.state == ResultState.HasData) {
+          return Container(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: restaurant.customerReviews.length,
+              itemBuilder: (context, index) {
+                return _buildReview(context, restaurant.customerReviews[index]);
+              },
+            ),
+          );
+        } else if (state.state == ResultState.NoData) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 150.0),
+            child: Center(
+                child: Text(
+              state.message,
+              style: const TextStyle(
+                  fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+            )),
+          );
+        } else if (state.state == ResultState.Error) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
+            child: Center(
+              child: Column(
+                children: [
+                  Image.asset('assets/images/error.png', height: 200),
+                  const Text(
+                    'Sorry, an error occurred in the connection!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
+          );
+        } else {
+          return const Center(child: Text(''));
+        }
+      },
     );
   }
 }
@@ -67,7 +118,7 @@ Widget _buildReview(BuildContext context, CustomerReview review) {
                     ),
                     const SizedBox(height: 4.0),
                     Text(
-                      review.date,
+                      review.date!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 12),

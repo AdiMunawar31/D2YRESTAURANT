@@ -36,11 +36,24 @@ class SearchRestaurantList extends StatelessWidget {
             ),
           );
         } else if (state.state == ResultState.NoData) {
-          return Center(
-              child: Container(
-                  margin: const EdgeInsets.only(top: 150.0),
-                  height: 150,
-                  child: Image.asset('assets/images/search.png')));
+          return Padding(
+            padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
+            child: Center(
+              child: Column(
+                children: [
+                  Image.asset('assets/images/error.png', height: 200),
+                  const Text(
+                    '404 DATA NOT FOUND!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
+          );
         } else if (state.state == ResultState.Error) {
           return Padding(
             padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),

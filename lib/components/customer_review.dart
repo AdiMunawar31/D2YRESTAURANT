@@ -67,7 +67,7 @@ Widget _buildReview(BuildContext context, CustomerReview review) {
                     ),
                     const SizedBox(height: 4.0),
                     Text(
-                      review.date,
+                      review.date!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 12),
