@@ -1,4 +1,4 @@
-import 'package:d2yrestaurant/common/detail_restaurant.dart';
+import 'package:d2yrestaurant/containers/detail_restaurant.dart';
 import 'package:d2yrestaurant/data/api/detail_restaurant_api_service.dart';
 import 'package:d2yrestaurant/provider/detail_restaurants_provider.dart';
 import 'package:flutter/material.dart';

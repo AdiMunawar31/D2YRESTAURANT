@@ -1,4 +1,4 @@
-import 'package:d2yrestaurant/common/search_restaurant_list.dart';
+import 'package:d2yrestaurant/containers/search_restaurant_list.dart';
 import 'package:d2yrestaurant/data/api/search_restaurant_api_service.dart';
 import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
 import 'package:flutter/cupertino.dart';

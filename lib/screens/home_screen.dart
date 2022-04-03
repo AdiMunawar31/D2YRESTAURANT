@@ -1,5 +1,5 @@
 import 'package:d2yrestaurant/components/heading.dart';
-import 'package:d2yrestaurant/common/restaurant_list.dart';
+import 'package:d2yrestaurant/containers/restaurant_list.dart';
 import 'package:d2yrestaurant/components/topbar.dart';
 import 'package:d2yrestaurant/data/api/restaurant_api_service.dart';
 import 'package:d2yrestaurant/provider/restaurants_provider.dart';

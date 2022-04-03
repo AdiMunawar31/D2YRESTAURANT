@@ -1,4 +1,4 @@
-import 'package:d2yrestaurant/common/review_restaurant_list.dart';
+import 'package:d2yrestaurant/containers/review_restaurant_list.dart';
 import 'package:d2yrestaurant/data/api/detail_restaurant_api_service.dart';
 import 'package:d2yrestaurant/data/models/detail_restaurant.dart';
 import 'package:d2yrestaurant/provider/detail_restaurants_provider.dart';
