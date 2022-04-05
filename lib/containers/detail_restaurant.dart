@@ -94,13 +94,22 @@ class DetailRestaurant extends StatelessWidget {
           );
         } else if (state.state == ResultState.NoData) {
           return Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
             child: Center(
-                child: Text(
-              state.message,
-              style: const TextStyle(
-                  fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
-            )),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/error.png', height: 200),
+                  const Text(
+                    '404 DATA NOT FOUND!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
           );
         } else if (state.state == ResultState.Error) {
           return Padding(
