@@ -25,9 +25,9 @@ class Restaurant {
     required this.city,
     required this.address,
     required this.pictureId,
-    required this.rating,
     required this.categories,
     required this.menus,
+    required this.rating,
     required this.customerReviews,
   });
 
@@ -37,9 +37,9 @@ class Restaurant {
   String city;
   String address;
   String pictureId;
-  num rating;
   List<Category> categories;
   Menus menus;
+  double rating;
   List<CustomerReview> customerReviews;
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
@@ -49,10 +49,10 @@ class Restaurant {
         city: json["city"],
         address: json["address"],
         pictureId: json["pictureId"],
-        rating: json["rating"],
         categories: List<Category>.from(
             json["categories"].map((x) => Category.fromJson(x))),
         menus: Menus.fromJson(json["menus"]),
+        rating: json["rating"].toDouble(),
         customerReviews: List<CustomerReview>.from(
             json["customerReviews"].map((x) => CustomerReview.fromJson(x))),
       );
@@ -72,30 +72,20 @@ class Category {
 
 class CustomerReview {
   CustomerReview({
-    required this.id,
     required this.name,
     required this.review,
-    this.date,
+    required this.date,
   });
 
-  String id;
   String name;
   String review;
-  String? date;
+  String date;
 
   factory CustomerReview.fromJson(Map<String, dynamic> json) => CustomerReview(
-        id: json["id"],
         name: json["name"],
         review: json["review"],
         date: json["date"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "review": review,
-        "date": date,
-      };
 }
 
 class Menus {

@@ -1,10 +1,10 @@
 import 'package:d2yrestaurant/data/models/detail_restaurant.dart';
 import 'package:flutter/material.dart';
 
-class CustomerReviewFirst extends StatelessWidget {
+class CustomerReviewList extends StatelessWidget {
   final Restaurant restaurant;
 
-  const CustomerReviewFirst({Key? key, required this.restaurant})
+  const CustomerReviewList({Key? key, required this.restaurant})
       : super(key: key);
 
   @override
@@ -14,9 +14,9 @@ class CustomerReviewFirst extends StatelessWidget {
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 1,
+        itemCount: restaurant.customerReviews.length,
         itemBuilder: (context, index) {
-          return _buildReview(context, restaurant.customerReviews.first);
+          return _buildReview(context, restaurant.customerReviews[index]);
         },
       ),
     );
@@ -67,7 +67,7 @@ Widget _buildReview(BuildContext context, CustomerReview review) {
                     ),
                     const SizedBox(height: 4.0),
                     Text(
-                      review.date!,
+                      review.date,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 12),

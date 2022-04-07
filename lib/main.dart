@@ -1,7 +1,5 @@
-import 'package:d2yrestaurant/data/models/detail_restaurant.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
-import 'package:d2yrestaurant/screens/review_screen.dart';
 import 'package:d2yrestaurant/screens/search_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +27,6 @@ class MyApp extends StatelessWidget {
           DetailScreen.routeName: (context) => DetailScreen(
               id: ModalRoute.of(context)?.settings.arguments as String),
           SearchScreen.routeName: (context) => const SearchScreen(),
-          ReviewScreen.routeName: (context) => ReviewScreen(
-              restaurant:
-                  ModalRoute.of(context)?.settings.arguments as Restaurant)
         });
   }
 }
