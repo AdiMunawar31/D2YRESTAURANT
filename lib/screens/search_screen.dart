@@ -1,7 +1,5 @@
 import 'package:d2yrestaurant/containers/search_restaurant_list.dart';
-import 'package:d2yrestaurant/data/api/search_restaurant_api_service.dart';
 import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

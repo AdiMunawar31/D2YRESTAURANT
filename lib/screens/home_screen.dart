@@ -1,6 +1,5 @@
 import 'package:d2yrestaurant/components/heading.dart';
 import 'package:d2yrestaurant/containers/restaurant_list.dart';
-import 'package:d2yrestaurant/components/topbar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

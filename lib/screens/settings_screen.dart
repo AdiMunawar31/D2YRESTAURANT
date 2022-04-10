@@ -13,19 +13,40 @@ class SettingsScreen extends StatelessWidget {
       child: Column(
         children: [
           const Padding(
-            padding: EdgeInsets.only(top: 16.0),
+            padding: EdgeInsets.symmetric(vertical: 16.0),
             child: Text(
               'Search',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
           ),
-          Material(
-            child: ListTile(
-              title: Text('Set Dark Theme'),
-              subtitle: Text('Change Theme '),
-              trailing: CupertinoSwitch(
-                value: true,
-                onChanged: (value) {},
+          Container(
+            margin: const EdgeInsets.only(right: 16.0, left: 8.0, bottom: 8.0),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: const Offset(2, 2),
+                  )
+                ],
+                border: Border.all(width: 0.1),
+                borderRadius: const BorderRadius.all(Radius.circular(8.0))),
+            child: Material(
+              child: ListTile(
+                title: const Text(
+                  'Set Dark Theme',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: const Text(
+                  'Change Theme',
+                  style: TextStyle(fontSize: 12),
+                ),
+                trailing: CupertinoSwitch(
+                  value: true,
+                  onChanged: (value) {},
+                ),
               ),
             ),
           )
