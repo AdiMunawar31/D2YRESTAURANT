@@ -77,17 +77,9 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
         height: 90,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 0,
-                blurRadius: 4,
-                offset: const Offset(1, 1),
-              )
-            ],
-            border: Border.all(width: 0.1),
-            borderRadius: const BorderRadius.all(Radius.circular(8.0))),
+          border: Border.all(width: 0.5, color: Colors.grey),
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+        ),
         child: Row(
           children: <Widget>[
             Container(

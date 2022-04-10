@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class DetailInformation extends StatelessWidget {
   final Restaurant restaurant;
 
-  const DetailInformation({Key? key, required this.restaurant})
-      : super(key: key);
+  const DetailInformation({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +46,7 @@ class DetailInformation extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 2.0, top: 2.0),
                 child: Text(
                   '${restaurant.rating}',
-                  style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red),
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.red),
                 ),
               ),
             ],
@@ -81,12 +77,10 @@ class DetailInformation extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.red[50],
                       border: Border.all(color: Colors.red, width: 1.0),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(4.0))),
+                      borderRadius: const BorderRadius.all(Radius.circular(4.0))),
                   child: Text(
                     category.name,
-                    style: const TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold),
+                    style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
                   ),
                 );
               },
@@ -102,8 +96,7 @@ class DetailInformation extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               )),
           const SizedBox(height: 8.0),
-          Text(restaurant.description,
-              style: TextStyle(fontSize: 16, color: Colors.grey[850])),
+          Text(restaurant.description, style: const TextStyle(fontSize: 16)),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
             child: Divider(color: Colors.grey),

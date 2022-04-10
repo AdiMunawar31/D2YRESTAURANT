@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: 24.0),
                       child: Text(
                         'Recomendations Restaurant for you!',
-                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                     Heading(name: 'Most Popular'),

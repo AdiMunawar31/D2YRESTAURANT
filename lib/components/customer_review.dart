@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class CustomerReviewList extends StatelessWidget {
   final Restaurant restaurant;
 
-  const CustomerReviewList({Key? key, required this.restaurant})
-      : super(key: key);
+  const CustomerReviewList({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +26,9 @@ Widget _buildReview(BuildContext context, CustomerReview review) {
   return Container(
     margin: const EdgeInsets.only(right: 16.0, left: 8.0, bottom: 8.0),
     decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 0,
-            blurRadius: 4,
-            offset: const Offset(2, 2),
-          )
-        ],
-        border: Border.all(width: 0.1),
-        borderRadius: const BorderRadius.all(Radius.circular(8.0))),
+      border: Border.all(width: 0.5, color: Colors.grey),
+      borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+    ),
     child: Padding(
       padding: const EdgeInsets.all(4.0),
       child: Column(
@@ -62,8 +53,7 @@ Widget _buildReview(BuildContext context, CustomerReview review) {
                       review.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4.0),
                     Text(

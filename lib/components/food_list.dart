@@ -32,16 +32,7 @@ Widget _buildFoodList(BuildContext context, Category food) {
       height: 120,
       margin: const EdgeInsets.all(4.0),
       decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 0,
-              blurRadius: 4,
-              offset: const Offset(2, 2),
-            )
-          ],
-          border: Border.all(width: 0.1),
+          border: Border.all(width: 0.5, color: Colors.grey),
           borderRadius: const BorderRadius.all(Radius.circular(8.0))),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
@@ -62,16 +53,14 @@ Widget _buildFoodList(BuildContext context, Category food) {
             Expanded(
               flex: 2,
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                 child: Center(
                   child: Text(
                     food.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
