@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:d2yrestaurant/provider/preferences_provider.dart';
+import 'package:d2yrestaurant/provider/scheduling_provider.dart';
+import 'package:d2yrestaurant/widgets/custom_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
                   child: Divider(color: Colors.grey),
                 ),
                 Container(
-                  margin: const EdgeInsets.all(16.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   decoration: BoxDecoration(
                     border: Border.all(width: 0.5, color: Colors.grey),
                     borderRadius: const BorderRadius.all(Radius.circular(8.0)),
@@ -47,6 +51,40 @@ class SettingsScreen extends StatelessWidget {
                         value: provider.isDarkTheme,
                         onChanged: (value) {
                           provider.enableDarkTheme(value);
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 0.5, color: Colors.grey),
+                    borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                  ),
+                  child: Material(
+                    child: ListTile(
+                      title: const Text(
+                        'Set Scheduling Restaurant',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: const Text(
+                        'Scheduling Alarm',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      trailing: Consumer<SchedulingProvider>(
+                        builder: (context, scheduled, child) {
+                          return CupertinoSwitch(
+                            value: provider.isDailyRestaurantActive,
+                            onChanged: (value) async {
+                              if (Platform.isIOS) {
+                                customDialog(context);
+                              } else {
+                                scheduled.scheduleRestaurant(value);
+                                provider.enableDailyRestaurant(value);
+                              }
+                            },
+                          );
                         },
                       ),
                     ),

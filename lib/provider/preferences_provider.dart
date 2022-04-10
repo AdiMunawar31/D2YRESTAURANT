@@ -7,6 +7,7 @@ class PreferencesProvider extends ChangeNotifier {
 
   PreferencesProvider({required this.preferencesHelper}) {
     _getTheme();
+    _getDailyRestaurantPreferences();
   }
 
   bool _isDarkTheme = false;
@@ -22,5 +23,18 @@ class PreferencesProvider extends ChangeNotifier {
   void enableDarkTheme(bool value) {
     preferencesHelper.setDarkTheme(value);
     _getTheme();
+  }
+
+  bool _isDailyRestaurantActive = false;
+  bool get isDailyRestaurantActive => _isDailyRestaurantActive;
+
+  void _getDailyRestaurantPreferences() async {
+    _isDailyRestaurantActive = await preferencesHelper.isDailyRestaurantActive;
+    notifyListeners();
+  }
+
+  void enableDailyRestaurant(bool value) {
+    preferencesHelper.setDailyRestaurant(value);
+    _getDailyRestaurantPreferences();
   }
 }

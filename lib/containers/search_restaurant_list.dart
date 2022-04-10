@@ -80,7 +80,7 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
         Navigator.pushNamed(context, DetailScreen.routeName, arguments: restaurant.id);
       },
       child: Container(
-        margin: const EdgeInsets.only(bottom: 16.0),
+        margin: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
         height: 90,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(

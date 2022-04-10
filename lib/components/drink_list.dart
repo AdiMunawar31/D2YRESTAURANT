@@ -46,7 +46,7 @@ Widget _buildDrinkList(BuildContext context, Category drink) {
                   height: 120,
                   width: 80,
                   child: Image.asset(
-                    'assets/images/drink.jpg',
+                    'assets/images/drink.png',
                     fit: BoxFit.cover,
                   )),
             ),

@@ -32,10 +32,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 16.0),
-                  child: Divider(color: Colors.grey),
-                ),
+                const Divider(color: Colors.grey),
                 Container(
                     margin: const EdgeInsets.all(16.0),
                     width: double.infinity,
