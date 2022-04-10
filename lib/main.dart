@@ -1,7 +1,10 @@
 import 'package:d2yrestaurant/data/api/restaurant_api_service.dart';
+import 'package:d2yrestaurant/data/api/search_restaurant_api_service.dart';
 import 'package:d2yrestaurant/provider/restaurants_provider.dart';
+import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
+import 'package:d2yrestaurant/screens/layout_screen.dart';
 import 'package:d2yrestaurant/screens/search_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +24,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => RestaurantsProvider(restaurantApiService: RestaurantApiService()),
         ),
+        ChangeNotifierProvider<SearchRestaurantsProvider>(
+          create: (_) => SearchRestaurantsProvider(searchRestaurantApiService: SearchRestaurantApiService()),
+        ),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -32,6 +38,7 @@ class MyApp extends StatelessWidget {
           initialRoute: SplashScreen.routeName,
           routes: {
             SplashScreen.routeName: (context) => const SplashScreen(),
+            LayoutScreen.routeName: (context) => const LayoutScreen(),
             HomeScreen.routeName: (context) => const HomeScreen(),
             DetailScreen.routeName: (context) => DetailScreen(id: ModalRoute.of(context)?.settings.arguments as String),
             SearchScreen.routeName: (context) => const SearchScreen(),

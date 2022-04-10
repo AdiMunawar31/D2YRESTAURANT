@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:d2yrestaurant/screens/home_screen.dart';
+import 'package:d2yrestaurant/screens/layout_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   startSplashScreen() async {
     Duration duration = const Duration(seconds: 3);
     return Timer(duration, () {
-      Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      Navigator.pushReplacementNamed(context, LayoutScreen.routeName);
     });
   }
 
