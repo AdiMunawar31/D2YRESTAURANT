@@ -1,5 +1,7 @@
 import 'package:d2yrestaurant/screens/home_screen.dart';
 import 'package:d2yrestaurant/screens/search_screen.dart';
+import 'package:d2yrestaurant/screens/settings_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -13,19 +15,26 @@ class LayoutScreen extends StatefulWidget {
 
 class _LayoutScreenState extends State<LayoutScreen> {
   int _bottomNavIndex = 0;
-  // static const String _homeText = 'Home';
+  static const String _homeText = 'Home';
 
   final List<Widget> _listScreen = const [
     HomeScreen(),
     SearchScreen(),
+    SettingsScreen(),
   ];
 
   final List<BottomNavigationBarItem> _bottomNavItem = const [
     BottomNavigationBarItem(
       icon: Icon(Icons.home_filled),
+      label: _homeText,
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.search),
+      icon: Icon(CupertinoIcons.search),
+      label: SearchScreen.searchText,
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.settings),
+      label: SettingsScreen.settingsText,
     ),
   ];
 

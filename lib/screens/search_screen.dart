@@ -30,19 +30,6 @@ class _SearchScreenState extends State<SearchScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.red,
-                    child: IconButton(
-                      icon: const Icon(
-                        CupertinoIcons.back,
-                        size: 24,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
