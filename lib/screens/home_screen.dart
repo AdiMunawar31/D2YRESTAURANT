@@ -19,29 +19,24 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const TopBar(),
-                    const Padding(
+                  children: const [
+                    TopBar(),
+                    Padding(
                       padding: EdgeInsets.only(top: 16.0, bottom: 4.0),
                       child: Text(
                         'D2Y RESTAURANT',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(bottom: 24.0),
                       child: Text(
                         'Recomendations Restaurant for you!',
                         style: TextStyle(fontSize: 16, color: Colors.black54),
                       ),
                     ),
-                    const Heading(name: 'Most Popular'),
-                    ChangeNotifierProvider<RestaurantsProvider>(
-                      create: (_) => RestaurantsProvider(
-                          restaurantApiService: RestaurantApiService()),
-                      child: const RestaurantList(),
-                    )
+                    Heading(name: 'Most Popular'),
+                    RestaurantList(),
                   ],
                 ))));
   }

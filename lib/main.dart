@@ -1,8 +1,11 @@
+import 'package:d2yrestaurant/data/api/restaurant_api_service.dart';
+import 'package:d2yrestaurant/provider/restaurants_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
 import 'package:d2yrestaurant/screens/search_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,20 +16,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'D2Y RESTAURANT',
-        theme: ThemeData(
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-                  primary: Colors.red,
-                )),
-        initialRoute: SplashScreen.routeName,
-        routes: {
-          SplashScreen.routeName: (context) => const SplashScreen(),
-          HomeScreen.routeName: (context) => const HomeScreen(),
-          DetailScreen.routeName: (context) => DetailScreen(
-              id: ModalRoute.of(context)?.settings.arguments as String),
-          SearchScreen.routeName: (context) => const SearchScreen(),
-        });
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => RestaurantsProvider(restaurantApiService: RestaurantApiService()),
+        ),
+      ],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'D2Y RESTAURANT',
+          theme: ThemeData(
+              colorScheme: Theme.of(context).colorScheme.copyWith(
+                    primary: Colors.red,
+                  )),
+          initialRoute: SplashScreen.routeName,
+          routes: {
+            SplashScreen.routeName: (context) => const SplashScreen(),
+            HomeScreen.routeName: (context) => const HomeScreen(),
+            DetailScreen.routeName: (context) => DetailScreen(id: ModalRoute.of(context)?.settings.arguments as String),
+            SearchScreen.routeName: (context) => const SearchScreen(),
+          }),
+    );
   }
 }

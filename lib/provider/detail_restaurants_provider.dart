@@ -9,8 +9,7 @@ class DetailRestaurantsProvider extends ChangeNotifier {
   final DetailRestaurantApiService detailRestaurantApiService;
   final String id;
 
-  DetailRestaurantsProvider(
-      {required this.detailRestaurantApiService, required this.id}) {
+  DetailRestaurantsProvider({required this.detailRestaurantApiService, required this.id}) {
     _fetchRestaurantDetail();
   }
 
@@ -26,25 +25,24 @@ class DetailRestaurantsProvider extends ChangeNotifier {
 
   Future<dynamic> _fetchRestaurantDetail() async {
     try {
-      _state = ResultState.Loading;
+      _state = ResultState.loading;
       notifyListeners();
-      final restaurants =
-          await detailRestaurantApiService.getRestaurantDetail(id);
+      final restaurants = await detailRestaurantApiService.getRestaurantDetail(id);
       if (restaurants.message.isEmpty) {
-        _state = ResultState.NoData;
+        _state = ResultState.noData;
         notifyListeners();
         return _message = 'Empty Data';
       } else {
-        _state = ResultState.HasData;
+        _state = ResultState.hasData;
         notifyListeners();
         return _detailRestaurantResult = restaurants;
       }
     } on SocketException {
-      _state = ResultState.Error;
+      _state = ResultState.error;
       notifyListeners();
       return _message = "No Internet Connection";
     } catch (err) {
-      _state = ResultState.Error;
+      _state = ResultState.error;
       notifyListeners();
       return _message = 'Error --> $err';
     }

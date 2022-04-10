@@ -12,7 +12,7 @@ class SearchRestaurantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SearchRestaurantsProvider>(
       builder: (context, state, _) {
-        if (state.state == ResultState.Loading) {
+        if (state.state == ResultState.loading) {
           return const Padding(
             padding: EdgeInsets.only(top: 150.0),
             child: Center(
@@ -23,19 +23,18 @@ class SearchRestaurantList extends StatelessWidget {
               ),
             ),
           );
-        } else if (state.state == ResultState.HasData) {
+        } else if (state.state == ResultState.hasData) {
           return SafeArea(
             child: ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               itemCount: state.result.restaurants.length,
               itemBuilder: (context, index) {
-                return _buildRestaurantsItem(
-                    context, state.result.restaurants[index]);
+                return _buildRestaurantsItem(context, state.result.restaurants[index]);
               },
             ),
           );
-        } else if (state.state == ResultState.NoData) {
+        } else if (state.state == ResultState.noData) {
           return Padding(
             padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
             child: Center(
@@ -45,16 +44,13 @@ class SearchRestaurantList extends StatelessWidget {
                   const Text(
                     '404 DATA NOT FOUND!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),
             ),
           );
-        } else if (state.state == ResultState.Error) {
+        } else if (state.state == ResultState.error) {
           return Padding(
             padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
             child: Center(
@@ -64,10 +60,7 @@ class SearchRestaurantList extends StatelessWidget {
                   const Text(
                     'Sorry, an error occurred in the connection!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),
@@ -84,8 +77,7 @@ class SearchRestaurantList extends StatelessWidget {
 Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
   return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, DetailScreen.routeName,
-            arguments: restaurant.id);
+        Navigator.pushNamed(context, DetailScreen.routeName, arguments: restaurant.id);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 16.0),
@@ -131,16 +123,14 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
                     restaurant.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 4,
                   ),
                   Row(
                     children: [
-                      const Icon(Icons.location_on,
-                          color: Colors.red, size: 16),
+                      const Icon(Icons.location_on, color: Colors.red, size: 16),
                       Padding(
                         padding: const EdgeInsets.only(top: 2.0),
                         child: Text(
@@ -163,10 +153,7 @@ Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
                         padding: const EdgeInsets.only(left: 2.0, top: 2.0),
                         child: Text(
                           '${restaurant.rating}',
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red),
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
                         ),
                       ),
                     ],

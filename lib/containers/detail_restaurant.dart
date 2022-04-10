@@ -17,7 +17,7 @@ class DetailRestaurant extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DetailRestaurantsProvider>(
       builder: (context, state, _) {
-        if (state.state == ResultState.Loading) {
+        if (state.state == ResultState.loading) {
           return const Center(
             child: CircularProgressIndicator(
               strokeWidth: 6.0,
@@ -25,7 +25,7 @@ class DetailRestaurant extends StatelessWidget {
               color: Colors.red,
             ),
           );
-        } else if (state.state == ResultState.HasData) {
+        } else if (state.state == ResultState.hasData) {
           return SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -39,8 +39,7 @@ class DetailRestaurant extends StatelessWidget {
                   ),
                   FoodList(restaurants: state.result.restaurant),
                   const Padding(
-                    padding:
-                        EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+                    padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                     child: Heading(name: 'Drinks Menu'),
                   ),
                   DrinkList(restaurants: state.result.restaurant),
@@ -62,7 +61,7 @@ class DetailRestaurant extends StatelessWidget {
               ),
             ),
           );
-        } else if (state.state == ResultState.NoData) {
+        } else if (state.state == ResultState.noData) {
           return Padding(
             padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
             child: Center(
@@ -72,16 +71,13 @@ class DetailRestaurant extends StatelessWidget {
                   const Text(
                     '404 DATA NOT FOUND!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),
             ),
           );
-        } else if (state.state == ResultState.Error) {
+        } else if (state.state == ResultState.error) {
           return Padding(
             padding: const EdgeInsets.only(top: 250.0, left: 30.0, right: 30.0),
             child: Center(
@@ -91,10 +87,7 @@ class DetailRestaurant extends StatelessWidget {
                   const Text(
                     'Sorry, an error occurred in the connection!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),

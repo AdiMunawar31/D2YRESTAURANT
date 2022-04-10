@@ -23,24 +23,24 @@ class RestaurantsProvider extends ChangeNotifier {
 
   Future<dynamic> _fetchAllRestaurant() async {
     try {
-      _state = ResultState.Loading;
+      _state = ResultState.loading;
       notifyListeners();
       final restaurant = await restaurantApiService.getRestaurantList();
       if (restaurant.restaurants.isEmpty) {
-        _state = ResultState.NoData;
+        _state = ResultState.noData;
         notifyListeners();
         return _message = 'Empty Data';
       } else {
-        _state = ResultState.HasData;
+        _state = ResultState.hasData;
         notifyListeners();
         return _restaurantResult = restaurant;
       }
     } on SocketException {
-      _state = ResultState.Error;
+      _state = ResultState.error;
       notifyListeners();
       return _message = "No Internet Connection";
     } catch (err) {
-      _state = ResultState.Error;
+      _state = ResultState.error;
       notifyListeners();
       return _message = 'Error --> $err';
     }
