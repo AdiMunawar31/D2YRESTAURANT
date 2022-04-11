@@ -37,12 +37,19 @@ class RestaurantList extends StatelessWidget {
           );
         } else if (state.state == ResultState.noData) {
           return Padding(
-            padding: const EdgeInsets.only(top: 150.0),
+            padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
             child: Center(
-                child: Text(
-              state.message,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
-            )),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/error.png', height: 170),
+                  const Text(
+                    'Restaurant Not Found!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
           );
         } else if (state.state == ResultState.error) {
           return Padding(
@@ -50,11 +57,11 @@ class RestaurantList extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Image.asset('assets/images/error.png', height: 200),
+                  Image.asset('assets/images/error.png', height: 170),
                   const Text(
                     'Sorry, an error occurred in the connection!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),

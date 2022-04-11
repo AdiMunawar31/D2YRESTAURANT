@@ -39,13 +39,6 @@ class _SplashScreenState extends State<SplashScreen> {
               fit: BoxFit.contain,
             ),
           ),
-          const Text(
-            "D2Y RESTAURANT",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28.0,
-            ),
-          ),
         ],
       ),
     );

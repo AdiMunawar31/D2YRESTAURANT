@@ -42,11 +42,11 @@ class SearchRestaurantList extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Image.asset('assets/images/error.png', height: 200),
+                  Image.asset('assets/images/error.png', height: 170),
                   const Text(
-                    '404 DATA NOT FOUND!',
+                    'Restaurant Not Found!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),
@@ -58,11 +58,11 @@ class SearchRestaurantList extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Image.asset('assets/images/error.png', height: 200),
+                  Image.asset('assets/images/error.png', height: 170),
                   const Text(
                     'Sorry, an error occurred in the connection!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
                   ),
                 ],
               ),
