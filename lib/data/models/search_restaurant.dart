@@ -1,3 +1,5 @@
+import 'package:d2yrestaurant/data/models/restaurant.dart';
+
 class SearchRestaurantResult {
   SearchRestaurantResult({
     required this.error,
@@ -9,17 +11,15 @@ class SearchRestaurantResult {
   int founded;
   List<Restaurant> restaurants;
 
-  factory SearchRestaurantResult.fromJson(Map<String, dynamic> json) =>
-      SearchRestaurantResult(
+  factory SearchRestaurantResult.fromJson(Map<String, dynamic> json) => SearchRestaurantResult(
         error: json["error"],
         founded: json["founded"],
-        restaurants: List<Restaurant>.from(
-            json["restaurants"].map((x) => Restaurant.fromJson(x))),
+        restaurants: List<Restaurant>.from(json["restaurants"].map((x) => Restaurant.fromJson(x))),
       );
 }
 
-class Restaurant {
-  Restaurant({
+class RestaurantSearch {
+  RestaurantSearch({
     required this.id,
     required this.name,
     required this.description,
@@ -35,7 +35,7 @@ class Restaurant {
   String city;
   double rating;
 
-  factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
+  factory RestaurantSearch.fromJson(Map<String, dynamic> json) => RestaurantSearch(
         id: json["id"],
         name: json["name"],
         description: json["description"],

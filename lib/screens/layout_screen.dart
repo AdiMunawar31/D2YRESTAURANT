@@ -1,4 +1,6 @@
+import 'package:d2yrestaurant/data/db/database_helper.dart';
 import 'package:d2yrestaurant/helpers/notification_helper.dart';
+import 'package:d2yrestaurant/provider/database_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:d2yrestaurant/screens/favorite_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
@@ -6,6 +8,7 @@ import 'package:d2yrestaurant/screens/search_screen.dart';
 import 'package:d2yrestaurant/screens/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LayoutScreen extends StatefulWidget {
   static const routeName = '/layout_screen';
@@ -21,11 +24,14 @@ class _LayoutScreenState extends State<LayoutScreen> {
   int _bottomNavIndex = 0;
   static const String _homeText = 'Home';
 
-  final List<Widget> _listScreen = const [
-    HomeScreen(),
-    SearchScreen(),
-    FavoriteScreen(),
-    SettingsScreen(),
+  final List<Widget> _listScreen = [
+    const HomeScreen(),
+    const SearchScreen(),
+    ChangeNotifierProvider<DatabaseProvider>(
+      create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
+      child: const FavoriteScreen(),
+    ),
+    const SettingsScreen(),
   ];
 
   @override

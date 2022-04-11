@@ -12,14 +12,14 @@ class SearchRestaurantsProvider extends ChangeNotifier {
     fetchRestaurantSearch(query);
   }
 
-  late SearchRestaurantResult _searchRestaurantResult;
+  late SearchRestaurantResult? _searchRestaurantResult;
   late ResultState _state;
   late String _message = '';
   final String _query = '';
 
   String get message => _message;
 
-  SearchRestaurantResult get result => _searchRestaurantResult;
+  SearchRestaurantResult? get result => _searchRestaurantResult;
 
   ResultState get state => _state;
 

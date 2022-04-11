@@ -4,14 +4,18 @@ import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:d2yrestaurant/common/navigation.dart';
 import 'package:d2yrestaurant/data/api/restaurant_api_service.dart';
 import 'package:d2yrestaurant/data/api/search_restaurant_api_service.dart';
+import 'package:d2yrestaurant/data/db/database_helper.dart';
+import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:d2yrestaurant/data/preferences/preferences_helper.dart';
 import 'package:d2yrestaurant/helpers/background_service.dart';
 import 'package:d2yrestaurant/helpers/notification_helper.dart';
+import 'package:d2yrestaurant/provider/database_provider.dart';
 import 'package:d2yrestaurant/provider/preferences_provider.dart';
 import 'package:d2yrestaurant/provider/restaurants_provider.dart';
 import 'package:d2yrestaurant/provider/scheduling_provider.dart';
 import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
+import 'package:d2yrestaurant/screens/favorite_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
 import 'package:d2yrestaurant/screens/layout_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';
@@ -58,6 +62,9 @@ class MyApp extends StatelessWidget {
               preferencesHelper: PreferencesHelper(sharedPreferences: SharedPreferences.getInstance()),
             ),
           ),
+          ChangeNotifierProvider(
+            create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
+          )
         ],
         child: Consumer<PreferencesProvider>(
           builder: (context, provider, child) {
@@ -72,7 +79,7 @@ class MyApp extends StatelessWidget {
                   LayoutScreen.routeName: (context) => const LayoutScreen(),
                   HomeScreen.routeName: (context) => const HomeScreen(),
                   DetailScreen.routeName: (context) =>
-                      DetailScreen(id: ModalRoute.of(context)?.settings.arguments as String),
+                      DetailScreen(restaurant: ModalRoute.of(context)?.settings.arguments as Restaurant),
                 });
           },
         ));

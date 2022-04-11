@@ -1,17 +1,18 @@
 import 'package:d2yrestaurant/common/navigation.dart';
+import 'package:d2yrestaurant/data/db/database_helper.dart';
 import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:d2yrestaurant/helpers/state.dart';
-import 'package:d2yrestaurant/provider/restaurants_provider.dart';
+import 'package:d2yrestaurant/provider/database_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class RestaurantList extends StatelessWidget {
-  const RestaurantList({Key? key}) : super(key: key);
+class FavoriteRestaurantList extends StatelessWidget {
+  const FavoriteRestaurantList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RestaurantsProvider>(
+    return Consumer<DatabaseProvider>(
       builder: (context, state, _) {
         if (state.state == ResultState.loading) {
           return const Padding(
@@ -29,20 +30,27 @@ class RestaurantList extends StatelessWidget {
             child: ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              itemCount: state.result.restaurants.length,
+              itemCount: state.favorites.length,
               itemBuilder: (context, index) {
-                return _buildRestaurantsItem(context, state.result.restaurants[index]);
+                return _buildRestaurantsItem(context, state.favorites[index]);
               },
             ),
           );
         } else if (state.state == ResultState.noData) {
           return Padding(
-            padding: const EdgeInsets.only(top: 150.0),
+            padding: const EdgeInsets.only(top: 70.0, left: 30.0, right: 30.0),
             child: Center(
-                child: Text(
-              state.message,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
-            )),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/error.png', height: 200),
+                  const Text(
+                    '404 DATA NOT FOUND!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
           );
         } else if (state.state == ResultState.error) {
           return Padding(
@@ -71,10 +79,12 @@ class RestaurantList extends StatelessWidget {
 Widget _buildRestaurantsItem(BuildContext context, Restaurant restaurant) {
   return InkWell(
       onTap: () {
-        Navigation.intentWithData(DetailScreen.routeName, restaurant);
+        Navigator.pushNamed(context, DetailScreen.routeName, arguments: restaurant).then((_) {
+          context.read<DatabaseProvider>().getFavorites();
+        });
       },
       child: Container(
-        margin: const EdgeInsets.only(bottom: 16.0),
+        margin: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
         height: 90,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(

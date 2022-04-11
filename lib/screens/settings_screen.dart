@@ -65,15 +65,15 @@ class SettingsScreen extends StatelessWidget {
                   child: Material(
                     child: ListTile(
                       title: const Text(
-                        'Set Scheduling Restaurant',
+                        'Restaurant Notification',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       subtitle: const Text(
-                        'Scheduling Alarm',
+                        'Enable Alarm Notification',
                         style: TextStyle(fontSize: 12),
                       ),
                       trailing: Consumer<SchedulingProvider>(
-                        builder: (context, scheduled, child) {
+                        builder: (context, scheduled, _) {
                           return CupertinoSwitch(
                             value: provider.isDailyRestaurantActive,
                             onChanged: (value) async {

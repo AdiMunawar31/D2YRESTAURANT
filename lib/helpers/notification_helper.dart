@@ -63,27 +63,27 @@ class NotificationHelper {
       iOS: iOSPlatformChannelSpesifics,
     );
 
-    var random = Random();
-    var restaurantRandom = random.nextInt(restaurants.count);
-
-    var titleNotification = '<b>D2Y RESTAURANT</b>';
+    var titleNotification = '<b>Daily New Restaurant</b>';
+    var restaurantRandom = Random().nextInt(restaurants.count);
     var titleRestaurant = restaurants.restaurants[restaurantRandom].name;
 
-    var restaurantId = {"id": restaurants.restaurants[restaurantRandom].id};
+    // var restaurantId = {"id": restaurants.restaurants[restaurantRandom].id};
 
     await flutterLocalNotificationsPlugin.show(
       0,
       titleNotification,
       titleRestaurant,
       platformChannelSpecifics,
-      payload: json.encode(restaurantId),
+      payload: json.encode(restaurants.toJson()),
     );
   }
 
   void configureSelectNotificationSubject(String routeName) {
     selectNotificationSubject.stream.listen((String payload) async {
-      var restaurant = json.decode(payload);
-      Navigation.intentWithData(routeName, restaurant['id']);
+      var data = RestaurantResult.fromJson(json.decode(payload));
+      var restaurantRandom = Random().nextInt(data.count);
+      var restaurant = data.restaurants[restaurantRandom];
+      Navigation.intentWithData(routeName, restaurant);
     });
   }
 }
