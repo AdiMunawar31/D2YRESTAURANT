@@ -5,11 +5,11 @@ import 'package:d2yrestaurant/components/detail_information.dart';
 import 'package:d2yrestaurant/components/drink_list.dart';
 import 'package:d2yrestaurant/components/food_list.dart';
 import 'package:d2yrestaurant/components/heading.dart';
-import 'package:d2yrestaurant/components/saved_button.dart';
 import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:d2yrestaurant/helpers/state.dart';
 import 'package:d2yrestaurant/provider/database_provider.dart';
 import 'package:d2yrestaurant/provider/detail_restaurants_provider.dart';
+import 'package:d2yrestaurant/widgets/snackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -79,13 +79,17 @@ class DetailRestaurant extends StatelessWidget {
                                           ? IconButton(
                                               icon: const Icon(CupertinoIcons.heart_fill),
                                               color: Colors.white,
-                                              onPressed: () => provider.removeFavorite(restaurant.id),
-                                            )
+                                              onPressed: () {
+                                                provider.removeFavorite(restaurant.id);
+                                                snackBar(context, 'Removing a restaurant from favorites!');
+                                              })
                                           : IconButton(
                                               icon: const Icon(CupertinoIcons.heart),
                                               color: Colors.white,
-                                              onPressed: () => provider.addFavorite(restaurant),
-                                            ),
+                                              onPressed: () {
+                                                provider.addFavorite(restaurant);
+                                                snackBar(context, 'Add restaurant to favorites!');
+                                              }),
                                     );
                                   },
                                 );

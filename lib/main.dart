@@ -15,7 +15,6 @@ import 'package:d2yrestaurant/provider/restaurants_provider.dart';
 import 'package:d2yrestaurant/provider/scheduling_provider.dart';
 import 'package:d2yrestaurant/provider/search_restaurants_provider.dart';
 import 'package:d2yrestaurant/screens/detail_screen.dart';
-import 'package:d2yrestaurant/screens/favorite_screen.dart';
 import 'package:d2yrestaurant/screens/home_screen.dart';
 import 'package:d2yrestaurant/screens/layout_screen.dart';
 import 'package:d2yrestaurant/screens/splash_screen.dart';

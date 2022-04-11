@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:d2yrestaurant/provider/preferences_provider.dart';
 import 'package:d2yrestaurant/provider/scheduling_provider.dart';
 import 'package:d2yrestaurant/widgets/custom_dialog.dart';
+import 'package:d2yrestaurant/widgets/snackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -51,6 +52,11 @@ class SettingsScreen extends StatelessWidget {
                         value: provider.isDarkTheme,
                         onChanged: (value) {
                           provider.enableDarkTheme(value);
+                          if (value) {
+                            snackBar(context, 'Dark Mode Activated!');
+                          } else {
+                            snackBar(context, 'Light Mode Activated!');
+                          }
                         },
                       ),
                     ),
@@ -82,6 +88,12 @@ class SettingsScreen extends StatelessWidget {
                               } else {
                                 scheduled.scheduleRestaurant(value);
                                 provider.enableDailyRestaurant(value);
+
+                                if (value) {
+                                  snackBar(context, 'Enabled Alarm Notification!');
+                                } else {
+                                  snackBar(context, 'Disabled Alarm Notification!');
+                                }
                               }
                             },
                           );

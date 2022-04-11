@@ -1,7 +1,5 @@
 import 'package:d2yrestaurant/containers/favorite_restaurant_list.dart';
-import 'package:d2yrestaurant/provider/database_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class FavoriteScreen extends StatelessWidget {
   static const favoriteText = 'Favorite';

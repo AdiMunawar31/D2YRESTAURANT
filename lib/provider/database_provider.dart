@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:d2yrestaurant/data/db/database_helper.dart';
 import 'package:d2yrestaurant/data/models/restaurant.dart';
 import 'package:d2yrestaurant/helpers/state.dart';
